@@ -34,10 +34,18 @@ import {
   ContactCard,
   Tab,
   Tabs,
+  Sidebar,
+  SidebarItem,
+  Grid,
+  GridItem,
 } from 'vant';
 
 export function setupVant() {
   [
+    Grid,
+    GridItem,
+    Sidebar,
+    SidebarItem,
     Icon,
     Tabbar,
     TabbarItem,

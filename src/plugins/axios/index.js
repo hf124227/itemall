@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { Toast } from 'vant';
+import store from '@/store';
+import router from '@/router';
 
 const handleResponse = ({ code, data, message }) => {
   // 成功 => 展示message / 返回data
@@ -15,6 +17,7 @@ const handleResponse = ({ code, data, message }) => {
       break;
     case 401:
       message = message || '未授权，请登录';
+      router.replace({ name: 'login' });
       break;
     case 403:
       message = message || '没有权限';
@@ -23,8 +26,8 @@ const handleResponse = ({ code, data, message }) => {
       message = '服务器错误';
       break;
   }
-
   Toast.fail(message);
+  return Promise.reject(message);
 };
 
 /** axios 二次封装（函数）*/
@@ -42,6 +45,7 @@ export const http = (config) => {
     (config) => {
       // loading
       // token
+      config.headers.authorization = store.state.token;
       return config;
     },
     (err) => console.log(err),

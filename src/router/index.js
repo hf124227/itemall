@@ -40,6 +40,33 @@ const routes = [
       title: '我的',
     },
   },
+  {
+    name: 'register',
+    path: '/register',
+    component: () => import('../views/register'),
+    meta: {
+      title: '注册',
+      isHide: true, // 隐藏底部导航栏
+    },
+  },
+  {
+    name: 'login',
+    path: '/login',
+    component: () => import('../views/login'),
+    meta: {
+      title: '登录',
+      isHide: true, // 隐藏底部导航栏
+    },
+  },
+  {
+    name: 'detail',
+    path: '/detail',
+    component: () => import('../views/detail'),
+    meta: {
+      title: '商品详情',
+      isHide: true, // 隐藏底部导航栏
+    },
+  },
 ];
 
 const router = new VueRouter({
